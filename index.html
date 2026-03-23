@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#c4a4d4" />
+  <title>Carta para você — lembranças e carinho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-1: #fdf6f0;
+      --bg-2: #f0e6f7;
+      --bg-3: #e8f4f1;
+      --ink: #2d2640;
+      --ink-soft: #5c5470;
+      --accent: #b87ba4;
+      --accent-2: #7eb8a8;
+      --card: rgba(255, 255, 255, 0.72);
+      --shadow: 0 12px 40px rgba(45, 38, 64, 0.12);
+      --radius: 20px;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-top: env(safe-area-inset-top, 0px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100dvh;
+      font-family: "Outfit", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(120% 80% at 10% 0%, var(--bg-2) 0%, transparent 55%),
+        radial-gradient(100% 70% at 100% 20%, var(--bg-3) 0%, transparent 50%),
+        linear-gradient(165deg, var(--bg-1) 0%, #fff 45%, var(--bg-1) 100%);
+      padding: calc(1rem + var(--safe-top)) 1rem calc(2rem + var(--safe-bottom));
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    header.page-head {
+      text-align: center;
+      margin-bottom: 1.75rem;
+      animation: rise 0.9s ease-out both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin: 0 0 0.5rem;
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(1.85rem, 5vw, 2.6rem);
+      line-height: 1.15;
+      margin: 0 0 0.35rem;
+      color: var(--ink);
+    }
+
+    .subtitle {
+      margin: 0;
+      font-weight: 300;
+      font-size: clamp(0.95rem, 2.8vw, 1.05rem);
+      color: var(--ink-soft);
+    }
+
+    section.panel {
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(1rem, 4vw, 1.35rem);
+      margin-bottom: 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.85);
+    }
+
+    .video-block {
+      position: relative;
+      overflow: hidden;
+      border-radius: calc(var(--radius) - 4px);
+    }
+
+    .video-block::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+    }
+
+    .video-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin-bottom: 0.65rem;
+      font-weight: 400;
+    }
+
+    .video-label span.icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 0.75rem;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      max-height: min(56vh, 420px);
+      object-fit: cover;
+      background: #1a1528;
+      border-radius: calc(var(--radius) - 6px);
+    }
+
+    .video-hint {
+      margin: 0.65rem 0 0;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      line-height: 1.45;
+    }
+
+    .letter h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.35rem, 3.5vw, 1.65rem);
+      margin: 0 0 0.75rem;
+      font-weight: 600;
+    }
+
+    .letter-body {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.05rem, 2.8vw, 1.2rem);
+      line-height: 1.65;
+      color: var(--ink);
+    }
+
+    .letter-body p {
+      margin: 0 0 1rem;
+    }
+
+    .letter-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .signature {
+      margin-top: 1.25rem;
+      font-style: italic;
+      color: var(--accent);
+      font-size: 1.05em;
+    }
+
+    /* Carousel */
+    .carousel-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .carousel-head h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.35rem, 3.5vw, 1.65rem);
+      margin: 0;
+    }
+
+    .carousel-head p {
+      margin: 0;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      max-width: 14rem;
+    }
+
+    .carousel-shell {
+      position: relative;
+      margin: 0 -0.25rem;
+    }
+
+    .carousel-viewport {
+      overflow: hidden;
+      border-radius: calc(var(--radius) - 6px);
+      touch-action: pan-y pinch-zoom;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+      will-change: transform;
+    }
+
+    .carousel-track.is-dragging {
+      transition: none;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      padding: 0 0.25rem;
+    }
+
+    .carousel-slide figure {
+      margin: 0;
+      position: relative;
+      border-radius: calc(var(--radius) - 8px);
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: #e8e3ef;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .carousel-slide figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.65rem 0.85rem;
+      font-size: 0.8rem;
+      color: #fff;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.65));
+      line-height: 1.35;
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      margin-top: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .carousel-btn {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      min-height: 48px;
+      border: none;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--ink);
+      box-shadow: 0 4px 18px rgba(45, 38, 64, 0.12);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 1.25rem;
+      line-height: 1;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .carousel-btn:active {
+      transform: scale(0.94);
+    }
+
+    .carousel-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+      padding: 0 0.25rem;
+    }
+
+    .carousel-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: none;
+      padding: 0;
+      background: rgba(45, 38, 64, 0.2);
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .carousel-dot[aria-current="true"] {
+      background: var(--accent);
+      transform: scale(1.2);
+    }
+
+    .carousel-dot:focus-visible {
+      outline: 2px solid var(--accent-2);
+      outline-offset: 2px;
+    }
+
+    footer.note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      margin-top: 1.5rem;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="page-head">
+      <p class="eyebrow">Com carinho</p>
+      <h1>Uma carta só para você</h1>
+      <p class="subtitle">Lembrete gentil, um vídeo meu e fotos que aquecem o coração</p>
+    </header>
+
+    <section class="panel" aria-labelledby="video-title">
+      <p class="video-label" id="video-title">
+        <span class="icon" aria-hidden="true">▶</span>
+        Mensagem em vídeo
+      </p>
+      <div class="video-block">
+        <!-- Troque "meu-video.mp4" pelo ficheiro do teu vídeo na mesma pasta (ou usa um caminho completo). -->
+        <video
+          controls
+          playsinline
+          preload="metadata"
+          poster="https://picsum.photos/seed/carta-video/1280/720"
+        >
+          <source src="./video_2026-03-22_11-31-35.mp4" type="video/mp4" />
+          <source src="./video_2026-03-22_11-31-35.mp4" type="video/webm" />
+          O teu navegador não suporta vídeo embutido. Podes substituir os ficheiros <code>meu-video.mp4</code> / <code>meu-video.webm</code> na pasta desta página.
+        </video>
+      </div>
+      <p class="video-hint">
+            </p>
+    </section>
+
+    <section class="panel letter" aria-labelledby="letter-title">
+      <h2 id="letter-title">O que eu queria que lembrasses</h2>
+      <div class="letter-body">
+        <p>
+          Irmã, às vezes os dias pesam e a cabeça enche de ruído — e é por isso que quis deixar isto aqui para ti.
+          Não precisas de estar sempre forte; descansar também é coragem.
+        </p>
+        <p>
+          Lembra-te do que já atravessaste: não foi sorte, foste tu. E o que ainda vem aí encaixa melhor quando sabes que não estás sozinha.
+        </p>
+        <p>
+          Cuida de ti com a mesma ternura com que cuidarias de alguém que amas. Um passo de cada vez já é caminho — e eu estou a torcer por ti, sempre.
+        </p>
+        <p>
+          "Bom, você é uma pessoa determinada e focada.
+ Mesmo com tudo o que acontece, continua lutando sem parar. 
+Fico feliz em ver você sempre avançando e evoluindo. 
+Sou grato a Deus por mais essa bênção que está por vim através de você: que vai nos alegra e trazer mais cor para a vida de todos nós."
+        </p>
+        <p class="signature">Com amor — Gabriel ou Afonsinho hahaha</p>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="carousel-title">
+      <div class="carousel-head">
+        <h2 id="carousel-title">Lembranças em fotos</h2>
+        <p></p>
+      </div>
+
+      <div class="carousel-shell" id="memories-carousel">
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="carouselTrack" role="list">
+            <div class="carousel-slide" role="listitem">
+              <figure>
+                <img src="./IMG-20181014-WA0034.jpg" alt="Lembrança em família" width="800" height="600" loading="lazy" decoding="async" />
+                <figcaption>Um dia que vale a pena lembrar </figcaption>
+              </figure>
+            </div>
+            <div class="carousel-slide" role="listitem">
+              <figure>
+                <img src="./IMG-20180901-WA0082-1.jpg" alt="Momento de alegria" width="800" height="600" loading="lazy" decoding="async" />
+                <figcaption>Risos que aquecem a alma</figcaption>
+              </figure>
+            </div>
+            <div class="carousel-slide" role="listitem">
+              <figure>
+                <img src="./2016-06-27-01-54-43-328.jpg" alt="Memória especial" width="800" height="600" loading="lazy" decoding="async" />
+                <figcaption> </figcaption>
+              </figure>
+            </div>
+            <div class="carousel-slide" role="listitem">
+              <figure>
+                <img src="./photo_2026-03-21_20-05-01.jpg" alt="Memória especial" width="800" height="600" loading="lazy" decoding="async" />
+                <figcaption> </figcaption>
+              </figure>
+          </div>
+          <div class="carousel-slide" role="listitem">
+            <figure>
+              <img src="./photo_2026-03-21_20-18-54.jpg" alt="Memória especial" width="800" height="600" loading="lazy" decoding="async" />
+              <figcaption> </figcaption>
+            </figure>
+        </div>
+        </div>  
+
+        <div class="carousel-controls">
+          <button type="button" class="carousel-btn" id="btnPrev" aria-label="Foto anterior">‹</button>
+          <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Ir para foto"></div>
+          <button type="button" class="carousel-btn" id="btnNext" aria-label="Foto seguinte">›</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="note">
+       </footer>
+  </div>
+
+  <script>
+    (function () {
+      var track = document.getElementById("carouselTrack");
+      var btnPrev = document.getElementById("btnPrev");
+      var btnNext = document.getElementById("btnNext");
+      var dotsWrap = document.getElementById("carouselDots");
+      if (!track || !btnPrev || !btnNext || !dotsWrap) return;
+
+      var slides = track.querySelectorAll(".carousel-slide");
+      var n = slides.length;
+      var index = 0;
+      var startX = 0;
+      var currentX = 0;
+      var pointerActive = false;
+      var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function setTransform(offsetPx) {
+        var base = -index * 100;
+        var pct = base + (offsetPx / track.parentElement.offsetWidth) * 100;
+        track.style.transform = "translateX(" + pct + "%)";
+      }
+
+      function goTo(i) {
+        index = Math.max(0, Math.min(n - 1, i));
+        track.classList.remove("is-dragging");
+        track.style.transform = "translateX(" + (-index * 100) + "%)";
+        updateDots();
+      }
+
+      function updateDots() {
+        dotsWrap.innerHTML = "";
+        for (var d = 0; d < n; d++) {
+          (function (j) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.className = "carousel-dot";
+            b.setAttribute("role", "tab");
+            b.setAttribute("aria-label", "Foto " + (j + 1));
+            if (j === index) b.setAttribute("aria-current", "true");
+            b.addEventListener("click", function () { goTo(j); });
+            dotsWrap.appendChild(b);
+          })(d);
+        }
+      }
+
+      btnPrev.addEventListener("click", function () { goTo(index - 1); });
+      btnNext.addEventListener("click", function () { goTo(index + 1); });
+
+      track.addEventListener(
+        "touchstart",
+        function (e) {
+          if (e.touches.length !== 1) return;
+          pointerActive = true;
+          startX = e.touches[0].clientX;
+          currentX = startX;
+          track.classList.add("is-dragging");
+        },
+        { passive: true }
+      );
+
+      track.addEventListener(
+        "touchmove",
+        function (e) {
+          if (!pointerActive || e.touches.length !== 1) return;
+          currentX = e.touches[0].clientX;
+          setTransform(currentX - startX);
+        },
+        { passive: true }
+      );
+
+      function endPointer() {
+        if (!pointerActive) return;
+        pointerActive = false;
+        var dx = currentX - startX;
+        var w = track.parentElement.offsetWidth || 1;
+        var threshold = w * 0.12;
+        if (dx < -threshold && index < n - 1) goTo(index + 1);
+        else if (dx > threshold && index > 0) goTo(index - 1);
+        else goTo(index);
+      }
+
+      track.addEventListener("touchend", endPointer);
+      track.addEventListener("touchcancel", endPointer);
+
+      var mouseDown = false;
+      track.addEventListener("mousedown", function (e) {
+        mouseDown = true;
+        pointerActive = true;
+        startX = e.clientX;
+        currentX = startX;
+        track.classList.add("is-dragging");
+        e.preventDefault();
+      });
+
+      window.addEventListener("mousemove", function (e) {
+        if (!mouseDown) return;
+        currentX = e.clientX;
+        setTransform(currentX - startX);
+      });
+
+      window.addEventListener("mouseup", function () {
+        if (!mouseDown) return;
+        mouseDown = false;
+        endPointer();
+      });
+
+      window.addEventListener("resize", function () {
+        goTo(index);
+      });
+
+      if (reducedMotion) {
+        track.style.transition = "none";
+      }
+
+      goTo(0);
+    })();
+  </script>
+</body>
+</html>
